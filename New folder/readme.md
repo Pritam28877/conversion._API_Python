@@ -1,3 +1,9 @@
+## the json data which was sent 
+![alt text](image-1.png)
+
+## The data what was sent 
+![alt text](image.png)
+
 ## Sending Events to Facebook Pixel API
 
 This Python script allows you to send events to the Facebook Pixel API. Follow the steps below to set up and use the script.
