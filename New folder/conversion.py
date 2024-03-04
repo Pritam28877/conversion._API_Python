@@ -6,9 +6,9 @@ event_data = {
     "data": [
         {
             "action_source": "website",
-            "event_id": 123458,
+            "event_id": 123410,
             "event_name": "TestEvent",
-            "event_time": 1709302732,
+            "event_time": int(time.time()),
             "user_data": {
                 "client_ip_address": "254.254.254.254",
                 "client_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0",
