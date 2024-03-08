@@ -7,7 +7,7 @@ import hashlib
 API_VERSION = "v15.0"  # Update API version as needed
 BASE_URL = f"https://graph.facebook.com/{API_VERSION}/"
 
-def send_offline_event(event_name, currency, value, custom_data, order_id, item_id, dataset_id=None):
+def send_offline_event(event_name, currency, value, custom_data, order_id, item_id, contact, dataset_id=None):
     """Sends an offline event to Facebook Conversions API.
 
     Args:
@@ -36,13 +36,13 @@ def send_offline_event(event_name, currency, value, custom_data, order_id, item_
         "event_name": event_name,
         "event_time": event_time,
         "user_data": {
-            "em": [hashlib.sha256(custom_data['email'].encode()).hexdigest()],
-            "ph": [hashlib.sha256(custom_data['phone'].encode()).hexdigest()]
+            "em": [hashlib.sha256(contact['email'].encode()).hexdigest()],
+            "ph": [hashlib.sha256(contact['phone'].encode()).hexdigest()]
         },
         "custom_data": {
             "currency": currency,
             "value": value,
-            "contents": custom_data['contents'],
+            "custom_data": custom_data,
             "order_id": order_id,
             "item_id": item_id
         }
@@ -57,4 +57,4 @@ def send_offline_event(event_name, currency, value, custom_data, order_id, item_
         print(f"Error sending event: {e}")
 
 # Example usage (uncomment if needed)
-# send_offline_event("Purchase", "USD", 123.45, {"email": "user@example.com", "phone": "1234567890", "contents": [{"id": "product123", "quantity": 1}]}, "order123", "item123", "<DATASET_ID>")
+# send_offline_event("Purchase", "INR", 123.45, {"email": "user@example.com", "phone": "1234567890", "contents": [{"id": "product123", "quantity": 1}]}, "order123", "item123", "<DATASET_ID>")
